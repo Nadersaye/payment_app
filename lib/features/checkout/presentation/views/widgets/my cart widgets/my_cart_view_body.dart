@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payment_app/features/checkout/data/models/order_info_model.dart';
+import 'custom_divider.dart';
 import 'order_info_listview.dart';
 
 class MyCartViewBody extends StatefulWidget {
@@ -27,6 +28,7 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
             height: 25,
           ),
           OrderInfoListview(orderInfo: orderInfo),
+          const CustomDivider(),
         ],
       ),
     );
