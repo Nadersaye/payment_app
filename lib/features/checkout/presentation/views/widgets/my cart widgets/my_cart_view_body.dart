@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payment_app/features/checkout/data/models/order_info_model.dart';
-import 'package:payment_app/features/checkout/presentation/views/widgets/my%20cart%20widgets/order_info_item.dart';
+import 'order_info_listview.dart';
 
 class MyCartViewBody extends StatefulWidget {
   const MyCartViewBody({super.key});
@@ -26,16 +26,7 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
           const SizedBox(
             height: 25,
           ),
-          ListView.separated(
-              itemBuilder: (context, index) {
-                return OrderInfoItem(
-                    keyString: orderInfo[index].keyString,
-                    value: orderInfo[index].value);
-              },
-              separatorBuilder: (context, index) => const SizedBox(
-                    height: 3,
-                  ),
-              itemCount: orderInfo.length),
+          OrderInfoListview(orderInfo: orderInfo),
         ],
       ),
     );
