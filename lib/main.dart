@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_app/features/checkout/presentation/views/my_cart_view.dart';
 
 void main() {
   runApp(const PaymentApp());
@@ -9,6 +10,9 @@ class PaymentApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyCartView(),
+    );
   }
 }
