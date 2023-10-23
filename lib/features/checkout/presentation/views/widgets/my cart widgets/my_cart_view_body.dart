@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payment_app/features/checkout/data/models/order_info_model.dart';
+import 'package:payment_app/features/checkout/presentation/views/widgets/my%20cart%20widgets/total_info.dart';
 import 'custom_divider.dart';
 import 'order_info_listview.dart';
 
@@ -29,6 +30,10 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
           ),
           OrderInfoListview(orderInfo: orderInfo),
           const CustomDivider(),
+          const TotalInfo(keyString: 'Total', value: 50.97),
+          const SizedBox(
+            height: 16,
+          ),
         ],
       ),
     );
