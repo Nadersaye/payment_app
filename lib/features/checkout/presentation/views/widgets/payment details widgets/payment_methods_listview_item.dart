@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomPaymentContainer extends StatelessWidget {
-  const CustomPaymentContainer({
+class PaymentMethodsListviewItem extends StatelessWidget {
+  const PaymentMethodsListviewItem({
     super.key,
     required this.isActive,
     required this.image,
