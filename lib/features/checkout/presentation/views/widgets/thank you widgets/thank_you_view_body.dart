@@ -9,8 +9,22 @@ class ThankYouViewBody extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(20),
       child: Stack(
-        children: [CustomThankYouCard()],
+        children: [CustomThankYouCard(), CustomseperatedCircleAvatar()],
       ),
+    );
+  }
+}
+
+class CustomseperatedCircleAvatar extends StatelessWidget {
+  const CustomseperatedCircleAvatar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircleAvatar(
+      radius: 18,
+      backgroundColor: Color(0xFF383838),
     );
   }
 }
