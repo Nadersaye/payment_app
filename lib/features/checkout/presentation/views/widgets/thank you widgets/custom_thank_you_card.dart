@@ -9,6 +9,7 @@ class CustomThankYouCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
+      width: double.infinity,
       decoration: ShapeDecoration(
         color: const Color(0xFFEDEDED),
         shape: RoundedRectangleBorder(

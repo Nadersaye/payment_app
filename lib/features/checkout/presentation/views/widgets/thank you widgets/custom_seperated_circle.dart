@@ -9,7 +9,7 @@ class CustomseperatedCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CircleAvatar(
       radius: 18,
-      backgroundColor: Color(0xFF383838),
+      backgroundColor: Colors.white,
     );
   }
 }
