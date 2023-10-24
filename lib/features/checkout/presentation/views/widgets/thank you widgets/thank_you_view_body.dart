@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'custom_check_circle_avatar.dart';
 import 'custom_seperated_circle.dart';
 import 'custom_thank_you_card.dart';
 import 'hash_seperated_list.dart';
@@ -34,19 +35,7 @@ class ThankYouViewBody extends StatelessWidget {
               right: 0,
               left: 0,
               top: -50,
-              child: CircleAvatar(
-                radius: 50,
-                backgroundColor: Color(0xFFEDEDED),
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Color(0xff34A853),
-                  child: Icon(
-                    Icons.check,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              child: CustomCheckCircleAvatar(),
             )
           ],
         ),
