@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/features/checkout/data/models/order_info_model.dart';
 import 'package:payment_app/features/checkout/presentation/views/payment_details_view.dart';
-import 'package:payment_app/features/checkout/presentation/views/widgets/my%20cart%20widgets/total_info.dart';
+import 'package:payment_app/features/checkout/presentation/views/widgets/total_info.dart';
 import '../custom_button.dart';
 import 'custom_divider.dart';
 import 'order_info_listview.dart';
