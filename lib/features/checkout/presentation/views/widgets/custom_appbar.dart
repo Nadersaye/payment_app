@@ -4,13 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/utils/styles.dart';
 
 PreferredSizeWidget? customAppbar(
-        {required BuildContext context, required String appbarTitle}) =>
+        {required BuildContext context, String? appbarTitle}) =>
     AppBar(
       backgroundColor: Colors.transparent,
       centerTitle: true,
       elevation: 0,
       title: Text(
-        appbarTitle,
+        appbarTitle ?? '',
         style: Styles.style25,
       ),
       leading: GestureDetector(
