@@ -7,6 +7,7 @@ PreferredSizeWidget? customAppbar(
         {required BuildContext context, required String appbarTitle}) =>
     AppBar(
       backgroundColor: Colors.transparent,
+      centerTitle: true,
       elevation: 0,
       title: Text(
         appbarTitle,
@@ -20,6 +21,7 @@ PreferredSizeWidget? customAppbar(
             child: SvgPicture.asset(
           'assets/images/Arrow 1.svg',
           colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+          height: 24,
         )),
       ),
     );

@@ -26,7 +26,7 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Column(
         children: [
-          Expanded(child: SvgPicture.asset('assets/images/Group 6.svg')),
+          Expanded(child: Image.asset('assets/images/Group 6.png')),
           const SizedBox(
             height: 25,
           ),
