@@ -21,7 +21,7 @@ class ThankYouDetailsList extends StatelessWidget {
               value: thankYouModel[index].value);
         },
         separatorBuilder: (context, index) => const SizedBox(
-              height: 3,
+              height: 20,
             ),
         itemCount: thankYouModel.length);
   }
