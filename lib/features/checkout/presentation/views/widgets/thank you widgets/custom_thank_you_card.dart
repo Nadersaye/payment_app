@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_app/core/utils/styles.dart';
 
 class CustomThankYouCard extends StatelessWidget {
   const CustomThankYouCard({
@@ -16,8 +17,19 @@ class CustomThankYouCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
       ),
-      child: const Column(
-        children: [],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 60),
+        child: Column(
+          children: [
+            Text('Thank you!',
+                textAlign: TextAlign.center, style: Styles.style25),
+            Text('Your transaction was successful',
+                textAlign: TextAlign.center, style: Styles.style20),
+            const SizedBox(
+              height: 42,
+            ),
+          ],
+        ),
       ),
     );
   }
