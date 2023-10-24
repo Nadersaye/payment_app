@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment_app/core/utils/styles.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/thank%20you%20widgets/thank_you_details_list.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/total_info.dart';
 
 import '../../../../data/models/thank_you_details_model.dart';
+import 'custom_card_type_container.dart';
 import 'custom_paid_button.dart';
 
 class CustomThankYouCard extends StatefulWidget {
@@ -63,23 +63,7 @@ class _CustomThankYouCardState extends State<CustomThankYouCard> {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: Row(
-                children: [
-                  SvgPicture.asset('assets/images/logo.svg'),
-                  const SizedBox(
-                    width: 23,
-                  ),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: 'Credit Card\n', style: Styles.style18),
-                        TextSpan(
-                            text: 'Mastercard **78 ', style: Styles.style18),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+              child: const CustomCardTypeContainer(),
             ),
             const Spacer(),
             const Row(
