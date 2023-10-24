@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:payment_app/features/checkout/presentation/views/payment_details_view.dart';
+import 'package:payment_app/features/checkout/presentation/views/widgets/custom_button.dart';
+import 'custom_credit_card.dart';
 import 'payment_methods_listview.dart';
 
-class PaymentDetailsViewBody extends StatefulWidget {
+class PaymentDetailsViewBody extends StatelessWidget {
   const PaymentDetailsViewBody({super.key});
-
-  @override
-  State<PaymentDetailsViewBody> createState() => _PaymentDetailsViewBodyState();
-}
-
-class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
-  int isIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Center(
-          child: CustomPaymentMethodsListview(),
-        ),
+    return const CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(child: CustomPaymentMethodsListview()),
+        SliverToBoxAdapter(child: CustomCreditCard()),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: CustomButton(
+              buttonText: 'Pay',
+              navigationWidget: PaymentDetailsView(),
+            ),
+          ),
+        )
       ],
     );
   }

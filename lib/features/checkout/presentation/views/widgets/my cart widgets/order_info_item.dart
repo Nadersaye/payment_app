@@ -8,14 +8,15 @@ class OrderInfoItem extends StatelessWidget {
   final num value;
   @override
   Widget build(BuildContext context) {
-    return RichText(
-        text: TextSpan(children: [
-      TextSpan(text: keyString, style: Styles.style18),
-      const WidgetSpan(
-          alignment: PlaceholderAlignment.baseline,
-          baseline: TextBaseline.alphabetic,
-          child: Spacer()),
-      TextSpan(text: '\$' '$value', style: Styles.style18),
-    ]));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          keyString,
+          style: Styles.style18,
+        ),
+        Text('\$ $value', style: Styles.style18),
+      ],
+    );
   }
 }

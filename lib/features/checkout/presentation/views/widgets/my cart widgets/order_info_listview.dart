@@ -14,6 +14,7 @@ class OrderInfoListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+        shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return OrderInfoItem(
