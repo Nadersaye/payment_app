@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payment_app/features/checkout/data/models/order_info_model.dart';
 import 'package:payment_app/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/my%20cart%20widgets/total_info.dart';
@@ -36,9 +35,13 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
           const SizedBox(
             height: 16,
           ),
-          const CustomButton(
+          CustomButton(
             buttonText: 'Complete Payment',
-            navigationWidget: PaymentDetailsView(),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return const PaymentDetailsView();
+              }));
+            },
           )
         ],
       ),

@@ -6,19 +6,15 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.buttonText,
-    required this.navigationWidget,
+    required this.onPressed,
   });
   final String buttonText;
-  final Widget navigationWidget;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       color: const Color(0xff34A853),
-      onPressed: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return navigationWidget;
-        }));
-      },
+      onPressed: onPressed,
       height: 73,
       minWidth: double.infinity,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
