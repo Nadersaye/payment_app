@@ -7,9 +7,11 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.buttonText,
     required this.onPressed,
+    this.isLoading = false,
   });
   final String buttonText;
   final void Function()? onPressed;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -18,9 +20,13 @@ class CustomButton extends StatelessWidget {
       height: 73,
       minWidth: double.infinity,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
-      child: Text(
-        buttonText,
-        style: Styles.style22,
+      child: Center(
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : Text(
+                buttonText,
+                style: Styles.style22,
+              ),
       ),
     );
   }
