@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_app/features/checkout/data/models/order_info_model.dart';
+import 'package:payment_app/features/checkout/data/repos/checkout_repo_imp.dart';
+import 'package:payment_app/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/total_info.dart';
 import '../custom_button.dart';
 import 'custom_card_bottom_sheet.dart';
@@ -41,7 +44,10 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
               showModalBottomSheet(
                   context: context,
                   builder: (context) {
-                    return const CustomCardBottomSheet();
+                    return BlocProvider(
+                      create: (context) => PaymentCubit(CheckoutRepoImp()),
+                      child: const CustomCardBottomSheet(),
+                    );
                   });
             },
           )
