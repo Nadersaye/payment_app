@@ -4,6 +4,7 @@ import 'package:payment_app/features/checkout/presentation/manager/cubit/payment
 import 'package:payment_app/features/checkout/presentation/views/thank_you_view.dart';
 import '../custom_button.dart';
 import 'execute_paypal.dart';
+import 'execute_stripe.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -31,13 +32,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             isLoading: state is PaymentLoading ? true : false,
             buttonText: 'Continue',
             onPressed: () {
-              /*PaymentIntentInputModel paymentIntentInputModel =
-                  PaymentIntentInputModel(
-                      amount: (100 * 100).toString(),
-                      currency: 'EGP',
-                      customerId: 'cus_OtBbIs3aWW3vWQ');
-              BlocProvider.of<PaymentCubit>(context).makePayment(
-                  paymentIntentInputModel: paymentIntentInputModel);*/
+              executeStripe(context);
               executePaypal(context);
             });
       },

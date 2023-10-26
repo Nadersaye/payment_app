@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:payment_app/core/utils/payment_keys.dart';
 import '../../../../data/models/amount_model/amount_model.dart';
 import '../../../../data/models/amount_model/details.dart';
 import '../../../../data/models/items_list_model/item.dart';
@@ -11,8 +12,8 @@ void executePaypal(BuildContext context) {
   Navigator.of(context).push(MaterialPageRoute(
     builder: (BuildContext context) => PaypalCheckoutView(
       sandboxMode: true,
-      clientId: "YOUR CLIENT ID",
-      secretKey: "YOUR SECRET KEY",
+      clientId: PaymentKeys.clientId,
+      secretKey: PaymentKeys.paypalSecretKey,
       transactions: [
         {
           "amount": transactionData.amount.toJson(),
