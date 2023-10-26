@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:payment_app/core/utils/api_service.dart';
 import 'package:payment_app/core/utils/payment_keys.dart';
 import 'package:payment_app/features/checkout/data/models/ephemeral_key_model/ephemeral_key_model.dart';
+import 'package:payment_app/features/checkout/data/models/init_payment_sheet_input.dart';
 import 'package:payment_app/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:payment_app/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -31,11 +32,16 @@ class StripeService {
     return ephemeralKeyModel;
   }
 
-  Future initPaymentSheet({required String paymentIntentClientSecret}) async {
+  Future initPaymentSheet(
+      {required InitPaymentSheetInputModel initPaymentSheetInputModel}) async {
     await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-            paymentIntentClientSecret: paymentIntentClientSecret,
-            merchantDisplayName: 'nader'));
+            paymentIntentClientSecret:
+                initPaymentSheetInputModel.paymentKeySecret,
+            merchantDisplayName: initPaymentSheetInputModel.merchantName,
+            customerId: initPaymentSheetInputModel.customerId,
+            customerEphemeralKeySecret:
+                initPaymentSheetInputModel.ephemeralKeySecret));
   }
 
   Future displayPaymentSheet() async {
@@ -45,8 +51,15 @@ class StripeService {
   Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
+    var ephemeralModel =
+        await createEphemeralKey(paymentIntentInputModel.customerId);
+    var initPaymentSheetInputModel = InitPaymentSheetInputModel(
+        paymentKeySecret: paymentIntentModel.clientSecret!,
+        customerId: paymentIntentInputModel.customerId,
+        ephemeralKeySecret: ephemeralModel.secret!,
+        merchantName: 'nader');
     await initPaymentSheet(
-        paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+        initPaymentSheetInputModel: initPaymentSheetInputModel);
     await displayPaymentSheet();
   }
 }
