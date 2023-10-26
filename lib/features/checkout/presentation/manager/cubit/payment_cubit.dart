@@ -14,7 +14,7 @@ class PaymentCubit extends Cubit<PaymentState> {
     emit(PaymentLoading());
     var data = await checkoutRepo.makePayment(
         paymentIntentInputModel: paymentIntentInputModel);
-    data.fold((l) => emit(PaymentFailure(errorMessage: l.toString())),
+    data.fold((l) => emit(PaymentFailure(errorMessage: l.errorMessage)),
         (r) => PaymentSuccess());
   }
 
