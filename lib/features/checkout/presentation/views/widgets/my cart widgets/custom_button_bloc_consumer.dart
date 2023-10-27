@@ -32,8 +32,12 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             isLoading: state is PaymentLoading ? true : false,
             buttonText: 'Continue',
             onPressed: () {
-              executeStripe(context);
-              executePaypal(context);
+              if (BlocProvider.of<PaymentCubit>(context).activeIndex == 0) {
+                executeStripe(context);
+              } else if (BlocProvider.of<PaymentCubit>(context).activeIndex ==
+                  1) {
+                executePaypal(context);
+              }
             });
       },
     );

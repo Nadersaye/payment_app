@@ -9,6 +9,7 @@ part 'payment_state.dart';
 class PaymentCubit extends Cubit<PaymentState> {
   PaymentCubit(this.checkoutRepo) : super(PaymentInitial());
   final CheckoutRepo checkoutRepo;
+  int activeIndex = 0;
   Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     emit(PaymentLoading());
@@ -16,6 +17,15 @@ class PaymentCubit extends Cubit<PaymentState> {
         paymentIntentInputModel: paymentIntentInputModel);
     data.fold((l) => emit(PaymentFailure(errorMessage: l.errorMessage)),
         (r) => emit(PaymentSuccess()));
+  }
+
+  bool checkIndex(int index) {
+    return activeIndex == index;
+  }
+
+  void changeIndex(int index) {
+    activeIndex = index;
+    emit(PaymentIndex());
   }
 
   @override

@@ -14,3 +14,5 @@ final class PaymentFailure extends PaymentState {
 
   PaymentFailure({required this.errorMessage});
 }
+
+final class PaymentIndex extends PaymentState {}
