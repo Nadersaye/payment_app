@@ -41,11 +41,11 @@ void executePaypal(BuildContext context) {
 ({AmountModel amount, ItemsListModel itemList}) getTransactionData() {
   var amount = AmountModel(
       total: "100",
-      currency: "EGP",
-      details: Details(subtotal: "80", shipping: "20", shippingDiscount: 0));
+      currency: "USD",
+      details: Details(subtotal: "100", shipping: "0", shippingDiscount: 0));
   List<OrderItemModel> listItems = [
-    OrderItemModel(currency: "EGP", name: "apple", price: "10", quantity: 4),
-    OrderItemModel(currency: "EGP", name: "apple", price: "30", quantity: 2)
+    OrderItemModel(currency: "USD", name: "apple", price: "10", quantity: 4),
+    OrderItemModel(currency: "USD", name: "apple", price: "30", quantity: 2)
   ];
   var itemList = ItemsListModel(orders: listItems);
   return (amount: amount, itemList: itemList);

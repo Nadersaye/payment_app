@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment_app/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import '../../../../data/models/payment_methods_model.dart';
 import 'payment_methods_listview_item.dart';
 
@@ -17,29 +19,31 @@ class _CustomPaymentMethodsListviewState
     PaymentMethodsModel(image: 'assets/images/SVGRepo_iconCarrier.svg'),
     PaymentMethodsModel(image: 'assets/images/Group.svg')
   ];
-  int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 62,
-      child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  activeIndex = index;
-                });
+    return BlocBuilder<PaymentCubit, PaymentState>(
+      builder: (BuildContext context, state) {
+        return SizedBox(
+          height: 62,
+          child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    BlocProvider.of<PaymentCubit>(context).changeIndex(index);
+                  },
+                  child: PaymentMethodsListviewItem(
+                      isActive: BlocProvider.of<PaymentCubit>(context)
+                          .checkIndex(index),
+                      image: paymentMethods[index].image),
+                );
               },
-              child: PaymentMethodsListviewItem(
-                  isActive: activeIndex == index,
-                  image: paymentMethods[index].image),
-            );
-          },
-          separatorBuilder: (context, index) => const SizedBox(
-                width: 20,
-              ),
-          itemCount: paymentMethods.length),
+              separatorBuilder: (context, index) => const SizedBox(
+                    width: 20,
+                  ),
+              itemCount: paymentMethods.length),
+        );
+      },
     );
   }
 }
